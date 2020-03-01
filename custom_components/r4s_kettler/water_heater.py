@@ -90,7 +90,7 @@ class RedmondWaterHeater(WaterHeaterDevice):
         await self.async_set_operation_mode(STATE_ELECTRIC)
 
     async def async_turn_on(self):
-        elf.async_set_operation_mode(STATE_ELECTRIC)
+        self.async_set_operation_mode(STATE_ELECTRIC)
 
     async def async_turn_off(self):
         self.async_set_operation_mode(STATE_OFF)
