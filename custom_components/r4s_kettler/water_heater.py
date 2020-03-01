@@ -19,8 +19,6 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 
 
-
-
 class RedmondWaterHeater(WaterHeaterDevice):
 
     def __init__(self, kettler):
@@ -90,6 +88,12 @@ class RedmondWaterHeater(WaterHeaterDevice):
             return
         self._kettler._tgtemp = temperature
         await self.async_set_operation_mode(STATE_ELECTRIC)
+
+    async def async_turn_on(self):
+        elf.async_set_operation_mode(STATE_ELECTRIC)
+
+    async def async_turn_off(self):
+        self.async_set_operation_mode(STATE_OFF)
 
     @property
     def min_temp(self):
